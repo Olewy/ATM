@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Variablen</title>
+
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        font-size: 2rem;
+      }
+      h1 {
+        color: gold;
+      }
+      div {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+      }
+      button {
+        width: fit-content;
+        font-size: 1.5rem;
+      }
+      .red {
+        color: red;
+      }
+
+      .blue {
+        color: blue;
+      }
+    </style>
+
+    <script>
+      var count = 0;
+      const upperLimit = 1000;
+      const lowerLimit = -100;
+
+      function decreaseCount() {
+        if (count > lowerLimit) {
+          count = count - 100;
+          countAnzeigen();
+        } else {
+          alert("Auszahlungslimit erreicht!");
+        }
+      }
+
+      function increaseCount() {
+        if (count < upperLimit) {
+          count = count + 100;
+          countAnzeigen();
+        } else {
+          alert("Einzahlungslimit erreicht!");
+        }
+      }
+
+      function countAnzeigen() {
+        console.log(count);
+        var element = document.getElementById("number");
+        element.innerHTML = count;
+
+        if (count < 0) {
+          element.classList.add("red");
+        } else if (count > 0) {
+          element.classList.add("blue");
+        } else {
+          element.classList.remove("red", "blue");
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>CASH - ATM</h1>
+    <div>
+      <button onclick="decreaseCount()">100€ Auszahlen</button>
+      <p>Kontostand: <span id="number">0</span>€</p>
+      <button onclick="increaseCount()">100€ Einzahlen</button>
+    </div>
+  </body>
+</html>
